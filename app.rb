@@ -40,8 +40,17 @@ def calculate_bmi_imperial(height, weight)
   ((weight / (height ** 2)) * 703).round(2)
 end
 
+def trip_time_calculator(distance, kph)
+  (distance / kph).round(2)
+end
+
+def trip_cost_calculator(price_of_fuel, distance, mpg)
+  (price_of_fuel * (distance / mpg)).round(2)
+end
+
+
 #Prompt for basic or advanced
-  puts "what Calculator mode would you like to use?: (B)asic or (A)dvanced or (BMI)Body Mass Index"
+  puts "what Calculator mode would you like to use?: (B)asic or (A)dvanced or (BMI)Body Mass Index or Journey (T)ime or Journey (C)ost"
   mode = gets.chomp.upcase
   puts "You are using the #{mode} calculator"
 
@@ -103,4 +112,16 @@ end
       puts "your BMI is #{calculate_bmi_imperial(height, weight)}"
     end
 
+  elsif mode == "T"
+    #Prompt for distance
+    puts "How far are you travelling in Kilometers?: "
+    distance = gets.chomp.to_f
+
+    #Prompt for kph
+    puts "What is your avergae speed in kilometers per hour?: "
+    kph = gets.chomp.to_f
+
+    puts "Your trip will take #{trip_time_calculator(distance, kph)} hours"
   end
+
+# mpg - ((speed - 60) * 2)
