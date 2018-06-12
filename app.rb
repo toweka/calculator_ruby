@@ -32,9 +32,12 @@ def advanced(num1, num2, function)
   ans
 end
 
+def calculate_bmi_metric(height, weight)
+  (weight / (height ** 2)).round(2)
+end
 
-def calculate_bmi(height, weight)
-  (weight / (height  ** 2))
+def calculate_bmi_imperial(height, weight)
+  ((weight / (height ** 2)) * 703).round(2)
 end
 
 #Prompt for basic or advanced
@@ -56,7 +59,7 @@ end
     num2 = gets.chomp.to_i
     #Prompt for function
 
-    puts basic(num1, num2, function)
+    puts "The answer is #{basic(num1, num2, function)}"
 
   elsif mode == "A"
     #Advanced Mode
@@ -72,17 +75,32 @@ end
     num2 = gets.chomp.to_i
     #Prompt for function
 
-    puts advanced(num1, num2, function)
+    puts "The answer is #{advanced(num1, num2, function)}"
 
   elsif mode == "BMI"
     #BMI mode
+    puts "Would you like to calculate in (I)mperial or (M)etric?: "
+    bmi_mode = gets.chomp.upcase
 
-    #Prompt for height
-    puts "What is your weight in Kilograms?: "
-    weight = gets.chomp.to_i
-    #Prompt for weight
-    puts "what is your height in metres?: "
-    height = gets.chomp.to_f
+    if bmi_mode == "M"
+      #Prompt for height
+      puts "What is your weight in Kilograms?: "
+      weight = gets.chomp.to_i
+      #Prompt for weight
+      puts "what is your height in metres?: "
+      height = gets.chomp.to_f
 
-    puts calculate_bmi(height, weight)
+      puts "your BMI is #{calculate_bmi_metric(height, weight)}"
+
+    elsif bmi_mode == "I"
+      #Prompt for height
+      puts "What is your weight in Pounds?: "
+      weight = gets.chomp.to_f
+      #Prompt for weight
+      puts "what is your height in Inches?: "
+      height = gets.chomp.to_f
+
+      puts "your BMI is #{calculate_bmi_imperial(height, weight)}"
+    end
+
   end
