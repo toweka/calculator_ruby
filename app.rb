@@ -1,7 +1,9 @@
 #Calculator
 
 #Prompt for basic or advanced
-
+  puts "what Calculator mode would you like to use? "
+  mode = gets.chomp
+  puts "You are using the #{mode} mode"
 #Basic Mode
 
   #Prompt for function
