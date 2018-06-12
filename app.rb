@@ -32,10 +32,15 @@ def advanced(num1, num2, function)
   ans
 end
 
+
+def calculate_bmi(height, weight)
+  (weight / (height  ** 2))
+end
+
 #Prompt for basic or advanced
-  puts "what Calculator mode would you like to use?: (B)asic or (A)dvanced"
+  puts "what Calculator mode would you like to use?: (B)asic or (A)dvanced or (BMI)Body Mass Index"
   mode = gets.chomp.upcase
-  puts "You are using the #{mode} mode"
+  puts "You are using the #{mode} calculator"
 
   if mode == "B"
   #Basic Mode
@@ -68,4 +73,16 @@ end
     #Prompt for function
 
     puts advanced(num1, num2, function)
+
+  elsif mode == "BMI"
+    #BMI mode
+
+    #Prompt for height
+    puts "What is your weight in Kilograms?: "
+    weight = gets.chomp.to_i
+    #Prompt for weight
+    puts "what is your height in metres?: "
+    height = gets.chomp.to_f
+
+    puts calculate_bmi(height, weight)
   end
