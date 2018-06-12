@@ -48,7 +48,6 @@ def trip_cost_calculator(price_of_fuel, distance, mpg)
   (price_of_fuel * (distance / mpg)).round(2)
 end
 
-
 #Prompt for basic or advanced
   puts "what Calculator mode would you like to use?: (B)asic or (A)dvanced or (BMI)Body Mass Index or Journey (T)ime or Journey (C)ost"
   mode = gets.chomp.upcase
@@ -122,6 +121,29 @@ end
     kph = gets.chomp.to_f
 
     puts "Your trip will take #{trip_time_calculator(distance, kph)} hours"
-  end
 
-# mpg - ((speed - 60) * 2)
+
+  elsif mode == "C"
+    #Prompt fuel price
+    puts "What is your price of fuel per gallon?: "
+    price_of_fuel = gets.chomp.to_f
+
+    #Prompt distance in miles
+    puts "How far are you travelling in miles?: "
+    distance = gets.chomp.to_f
+
+    #Prompt for kph
+    puts "What is your avergae speed in miles per hour?: "
+    mph = gets.chomp.to_f
+
+    #Prompt for mpg
+    puts "What is your fuel efficiency (mpg)?: "
+    mpg = gets.chomp.to_f
+
+    if mpg > 60
+      mpg = mpg - ((mph - 60) * 2)
+    end
+
+    puts "your trip will cost #{trip_cost_calculator(price_of_fuel, distance, mpg)}"
+
+  end
